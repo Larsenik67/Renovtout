@@ -488,9 +488,16 @@ nav>a:hover{
 }
 
 .container_reseau>i{
-    font-size: 25px;
-    color: pink;
-    padding: 1em;
+    display: flex;
+    color: #fff;
+    background-color: #e4007f;
+    border-radius: 60px;
+    margin: 1em;
+    width: 3em;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .container_reseau>i:hover{
