@@ -1,3 +1,44 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $nom = $_POST["name"];
+    $email = $_POST["email"];
+    $objet = $_POST["subject"];
+    $message = $_POST["message"];
+
+    // Définir les informations de l'email
+    $destinataire = "destinataire@example.com";
+    $sujet = $objet;
+    $contenu = "Nom : $nom\nEmail : $email\nMessage :\n$message";
+
+    // Définir l'en-tête de l'email
+    $headers = "From: $email" . "\r\n" .
+        "Reply-To: $email" . "\r\n" .
+        "X-Mailer: PHP/" . phpversion();
+
+    // Envoyer l'email
+    if (mail($destinataire, $sujet, $contenu, $headers)) {
+        echo "L'email a été envoyé avec succès.";
+    } else {
+        echo "Une erreur s'est produite lors de l'envoi de l'email.";
+    }
+
+    $contenu = "Vous nous avez envoyé le message suivant :\n$message nous vous recontacterons au plus vite";
+
+    // Définir l'en-tête de l'email
+    $headers = "From: $destinataire" . "\r\n" .
+        "Reply-To: $destinataire" . "\r\n" .
+        "X-Mailer: PHP/" . phpversion();
+
+    // Envoyer l'email
+    if (mail($email, $sujet, $contenu, $headers)) {
+        echo "L'email a été envoyé avec succès.";
+    } else {
+        echo "Une erreur s'est produite lors de l'envoi de l'email.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,8 +73,9 @@
                 <div class="backdrop">
                 <div class="wrapper">
                 <div class="accueil_left_side">
-                    <h1>Grow Your Business Faster</h1>
-                    <p class="rose">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.</p>
+                    <p>RénoV'Tout est une entreprise spécialisée dans les travaux de rénovation pour les particuliers et les professionnels. Nous sommes fiers d'offrir une large gamme de services, notamment la rénovation de cuisines, de salles de bains, de revêtements de sols et de murs, ainsi que la pose de fenêtres et de portes.
+
+</p>
                 </div>
 
                 <div class="accueil_right_side">
@@ -67,7 +109,7 @@
                         <img class="img_bio_gallery" src="img/Logo_noir.jpg" alt="bio perle bleue plat">
                     </div>
                     <div class="right_side_bio">
-                        <p class="text_bio">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam distinctio provident quis ex voluptate quia, quos laboriosam voluptatum deserunt quaerat vero modi alias eum deleniti impedit doloremque dignissimos excepturi quisquam."</p>
+                        <p class="text_bio">"Mon objectif est de vous fournir un service de qualité supérieure à des prix compétitifs. Pour cela, je travaille avec vous tout au long du processus de rénovation pour comprendre vos besoins et vos attentes, et m'assurer que le résultat final est conforme à vos attentes."</p>
                         <p class="rose">NOM PRENOM</p>
                     </div>
             </section>

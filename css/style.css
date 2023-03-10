@@ -90,6 +90,8 @@ nav>a:hover{
     flex: 1.5;
     padding-top: 6em;
     padding-bottom: 6em;
+    margin-bottom: 10px;
+    color: black;
 }
 
 .accueil_left_side>h1{
